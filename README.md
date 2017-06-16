@@ -25,3 +25,14 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+<p align="center">
+  <img src="https://res.cloudinary.com/ideation/image/upload/w_140,dpr_1/v1dkssqz1fvtriq1lxot.png" width="140px">
+</p>
+
+# {RE✈CODING AVIATION
+Mister Spex @ Hackathon 2017
+
+<p align="center">
+  <img src="https://www.misterspex.fr/INTERSHOP/static/WFS/MisterSpex-MisterSpexFR-Site/-/-/fr_FR/img/msx-logo.png" width="236px">
+</p>
