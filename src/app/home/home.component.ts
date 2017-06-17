@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   private stores = [];
   private shownStores = [];
 
-  private showOptions = false;
+  private checkedIn;
 
   private airportFullName = ""
 
@@ -41,9 +41,9 @@ export class HomeComponent implements OnInit {
         task.status = !task.status
 
         if( task.status && task.name == "Check-in" ) {
-          this.showOptions = true
+          this.checkedIn = true
         } else if( !task.status && task.name == "Check-in" ) {
-          this.showOptions = false
+          this.checkedIn = false
         }
       })
 
@@ -64,7 +64,7 @@ export class HomeComponent implements OnInit {
         .then( () => {
           this.currentUser = this._us.currentUser;
           if( this.currentUser.taskList[0].status )
-            this.showOptions = true
+            this.checkedIn = true
         })
     }
 
