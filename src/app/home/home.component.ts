@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { PersistenceService, StorageType } from 'angular-persistence';
 import { UserService } from './../user.service';
 import { TasksService } from './../tasks.service';
@@ -33,8 +34,15 @@ export class HomeComponent implements OnInit {
   constructor(
     private _ts: TasksService,
     private _us: UserService,
-    private _ps: PersistenceService
+    private _ps: PersistenceService,
+    private router: Router
+
   ) { }
+
+  logout() {
+    this._ps.removeAll()
+    this.router.navigateByUrl('/login')
+  }
 
   checkItem( task ) {
     this._us.toggleTask(task.name, !task.status)

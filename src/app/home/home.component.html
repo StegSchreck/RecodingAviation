@@ -19,13 +19,14 @@
       </div>
     </div>
   </div>
-  <button class="flight-info-btn mui-btn mui-btn--fab"><i class="material-icons md-36">&#xE5D3;</i></button>
+  <button (click)="logout()" class="flight-info-btn mui-btn mui-btn--fab"><i class="material-icons md-36">&#xE5D3;</i></button>
 </div>
 
 <ul class="timeline">
   <li class="time time-first"><span class="sub">Arrival time at airport</span><span>{{ dateNow | date:'shortTime' }}</span></li>
   <li *ngFor="let task of currentUser.taskList; let i = index">
     <div (click)="checkItem(task)" class="mui-panel actionItem {{task.status ? 'done' : 'pending'}}">
+      {{ i+1 }}
       {{task.name}}
     </div>
     <ul *ngIf="showOptions && task.name == 'Check-In'">
