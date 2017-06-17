@@ -15,7 +15,7 @@
       </div>
       <div class="mui-col-xs-2 header-right">
         <p><span class="sub">Gate</span><br>
-        {{ currentUser.departure.gate ? currentUser.departure.gate : ' - ' }}</p>
+        {{ currentUser.departure.gate.length > 0 ? currentUser.departure.gate : ' - ' }}</p>
       </div>
     </div>
   </div>
@@ -66,19 +66,39 @@
         <p class="sub">Many more experiences are available after security.</p>
       </div>
       <div class="mui-col-xs-3">
-        <p>Check when done!</p>
-      </div>
-    </div>
-  </li><li _ngcontent-rrm-3="">
-    <div _ngcontent-rrm-3="" ng-reflect-class-name="mui-panel actionItem pending" class="mui-panel actionItem pending">
-      <div class="mui-col-xs-9">
-        <p class="sup">3. Boarding the Plane</p>
-        <p class="sub">No worries! We will let you know when the plane is ready to board.</p>
-      </div>
-      <div class="mui-col-xs-3">
+        <p class="check"><span>Done?</span></p>
       </div>
     </div>
   </li>
+  
+  <li _ngcontent-rrm-3="">
+    <div _ngcontent-rrm-3="" ng-reflect-class-name="mui-panel actionItem notice" class="mui-panel actionItem notice">
+      <div>
+        <p>Your Flight has been delayed until <strong>18:56</strong></p>
+      </div>
+    </div>
+  </li>
+
+<li _ngcontent-rrm-3="" class="time time-last"><span _ngcontent-rrm-3="">13:54 AM</span></li>
+
+  <li _ngcontent-rrm-3="">
+    <div _ngcontent-rrm-3="" ng-reflect-class-name="actionItem text" class="actionItem text">
+      <div>
+        <p>You now have <strong>40 minutes</strong> more until you are ready to board. How would you like to spend them?</p>
+      </div>
+    </div>
+  </li>
+  
+  <li _ngcontent-rrm-3="">
+    <div _ngcontent-rrm-3="" ng-reflect-class-name="mui-panel actionItem pending" class="mui-panel actionItem pending">
+      <div>
+        <p class="sup">3. Boarding the Plane</p>
+        <p class="sub">No worries! We will let you know when the plane is ready to board.</p>
+      </div>
+    </div>
+  </li>
+  
+
   <li _ngcontent-rrm-3="" class="time time-last"><span _ngcontent-rrm-3="">11:00 AM</span><span _ngcontent-rrm-3="" class="sub">Flight departure time</span></li>
 </ul>
 

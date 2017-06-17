@@ -72,7 +72,7 @@ ul:before{
 }
 .time-first span:last-child,.time-last span:first-child{
     display: inline-block;
-    background: rgba(0,0,0,0.04);
+    background: #f5f5f5;
     padding: 8px 12px;
     font-weight: bold;
 }
@@ -86,7 +86,7 @@ ul:before{
     height: 11px;
     width: 11px;
     border-radius: 5px;
-    background: rgba(0,0,0,0.12);
+    background: #e0e0e0;
     display: block;
     left: 50%;
     position: absolute;
@@ -102,7 +102,7 @@ ul:before{
     height: 11px;
     width: 11px;
     border-radius: 5px;
-    background: rgba(0,0,0,0.12);
+    background: #e0e0e0;
     display: block;
     left: 50%;
     position: absolute;
@@ -116,14 +116,40 @@ ul:before{
     font-size: 16px;
     line-height: 24px;
 }
+.actionItem div {
+    padding:0;
+}
 .actionItem div:first-child{
-    padding-right:16px;
-
+    padding:0 16px 0 0;
 }
 
 .actionItem p{
     padding: 0;
     margin: 0;
+}
+
+.actionItem p.check{
+    font-size:12px;
+    border: 2px solid rgba(0,0,0,0.87);
+    background:rgba(255,255,255,0.75);
+    border-radius: 2px;
+    width: 24px;
+    height: 24px;
+    float: right;
+    text-align: center;
+}
+.actionItem p.check span{
+    margin: 28px 0 0 -4px;
+    display: block;
+}
+
+.actionItem i.material-icons{
+    font-size: 24px;
+    float: right;
+}
+
+.actionItem p.sub{
+    padding: 0 0 0 18px;
 }
 
 .actionItem.active {
@@ -140,4 +166,16 @@ ul:before{
 
 .actionItem.pending {
     background-color: rgb(191, 234, 255);
+    color: rgba(0,0,0,0.54);
+}
+
+.actionItem.notice {
+    background-color: rgb(252, 104, 50);
+    text-align: center;
+    margin: 0 -15px;
+    border-radius: 0;
+}
+
+.actionItem.text{
+    background-color:#FFFFFF;
 }
