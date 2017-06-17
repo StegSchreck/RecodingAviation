@@ -8,3 +8,8 @@ p, li{font-size:14px;line-height:20px;letter-spacing:0.2; padding: 0 0 16px}
 .sup{font-size:20px;line-height:28px;}
 
 .mui-panel{border-radius:4px;}
+
+.mui-btn:active {
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 2px rgba(0,0,0,.2);
+    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 2px rgba(0,0,0,.2);
+}

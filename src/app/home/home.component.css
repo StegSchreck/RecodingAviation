@@ -1,18 +1,21 @@
 .header {
     margin-bottom: 16px;
-    position:fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-}
-
-.mui-appbar{
-    background: rgb(25, 182, 255)!important;
     position: fixed;
     left: 0;
     right: 0;
     top: 0;
     z-index: 1000;
+}
+
+.mui-appbar{
+    background: rgb(25, 182, 255)!important;
+}
+
+.flight-info-btn{
+    position: absolute;
+    right: 32px;
+    top: 96px;
+    z-index: 1001;
 }
 
 .header-left{
@@ -37,7 +40,7 @@
 .timeline {
     display: flex;
     flex-direction: column;
-    margin-top: 160px;
+    margin-top: 137px;
 }
 
 ul {

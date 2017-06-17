@@ -19,6 +19,7 @@
       </div>
     </div>
   </div>
+  <button class="flight-info-btn mui-btn mui-btn--fab">+</button>
 </div>
 
 <ul class="timeline">
@@ -26,8 +27,6 @@
   <li (click)="checkItem(task)" class="mui-panel actionItem {{task.status ? 'done' : 'pending'}}" *ngFor="let task of currentUser.taskList; let i = index">
     {{task.name}}
   </li>
-
-
   <li class="time time-last"><span>{{ currentUser.departure.actualTime | date:'shortTime' }}</span><span class="sub">Flight departure time</span></li>
 </ul>
 
