@@ -23,7 +23,7 @@ export class UserService {
       .toPromise()
       .then( ( resp ) => {
 
-        return resp.json().airportName;
+        return resp.json().cityName;
       } )
 
   }
