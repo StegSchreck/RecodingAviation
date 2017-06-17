@@ -134,7 +134,7 @@ export class UserService {
       standardTaskList: data.json().standardTaskList
     }
 
-    this.currentUser.taskList = this.currentUser.taskList.sort((left, right) => {
+    this.currentUser.standardTaskList = this.currentUser.standardTaskList.sort((left, right) => {
       console.log(left, right)
       if(left.timeStamp < right.timeStamp)
         return -1
