@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { TasksService } from './tasks.service';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
@@ -29,7 +30,7 @@ import { ManageTimeComponent } from './manage-time/manage-time.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [TasksService],
+  providers: [TasksService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

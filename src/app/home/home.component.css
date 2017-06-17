@@ -7,6 +7,27 @@
     flex-direction: column;
 }
 
+ul {
+    list-style: none;
+    padding: 0 16px;
+    margin: 0;
+    text-align: center;
+}
+
+.time-first {
+    margin-bottom: 12px;
+}
+
+.time {
+    display: inline-block;
+}
+
+.actionItem {
+    border: 1px solid black;
+    padding: 8px;
+    margin-bottom: 12px;
+}
+
 .time {
     border: 1px solid black;
     padding: 4px 8px

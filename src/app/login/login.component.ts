@@ -1,3 +1,4 @@
+import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
@@ -10,16 +11,21 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   ngOnInit() {
-    
   }
 
   constructor(
-    private router: Router
+    private router: Router,
+    private _us: UserService
   ) {
   }
 
   login() {
-    this.router.navigateByUrl('/home');
+    // this.router.navigateByUrl('/home');
+
+    this._us.post()
+      .then( () => {
+        console.log( 'I am in!' );
+      } )
   }
 
 
