@@ -7,9 +7,8 @@
         <span class="sup">{{ currentUser.flightNumber }} </span><br>
         {{ currentUser.departure.airport }}</p>
       </div>
-      <div class="mui-col-xs-4 header-right">
+      <div class="mui-col-xs-4 header-right" style="text-align: right">
         {{ currentUser.departure.actualTime | date: 'shortTime' }}
-        <span>{{timeDiff}}</span>
       </div>
     </div>
   </div>
