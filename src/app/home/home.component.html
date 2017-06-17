@@ -15,7 +15,7 @@
       </div>
       <div class="mui-col-xs-2 header-right">
         <p><span class="sub">Gate</span><br>
-        A06</p>
+        {{ currentUser.departure.gate.length > 0 ? currentUser.departure.gate : ' - ' }}</p>
       </div>
     </div>
   </div>
@@ -24,7 +24,7 @@
 
 <ul class="timeline">
   <li class="time time-first"><span class="sub">Arrival time at airport</span><span>{{ dateNow | date:'shortTime' }}</span></li>
-  <li *ngFor="let task of currentUser.taskList; let i = index">
+  <li *ngFor="let task of currentUser.standardTaskList; let i = index">
     <div (click)="checkItem(task)" class="mui-panel actionItem {{task.status ? 'done' : 'pending'}}">
       {{ i+1 }}
       {{task.name}}
