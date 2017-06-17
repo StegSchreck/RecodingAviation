@@ -3,8 +3,26 @@
 }
 
 .mui-appbar{
-    background: rgb(102, 204, 255)!important;
+    background: rgb(25, 182, 255)!important;
 }
+
+.header-left{
+    padding: 16px;
+}
+.header-right{
+    padding: 16px 16px 16px 0;
+}
+.header p{
+    padding:0!important;
+    margin:0!important;
+}
+.header p.name{
+    padding:0 0 12px;
+}
+.header p.sub{
+    color:#FFF;
+}
+
 
 .timeline {
     display: flex;
@@ -82,7 +100,7 @@ ul:before{
 }
 
 .actionItem.done {
-    background-color: green;
+    background-color: rgb(141, 221, 102);
 }
 
 .actionItem.pending {
