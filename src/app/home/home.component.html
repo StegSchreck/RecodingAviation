@@ -1,15 +1,21 @@
 <div class="header">
   <div class="mui-appbar mui--z1">
     <div class="mui-container mui-row">
-      <div class="mui-col-xs-8 header-left">
-        <p class="name">{{ currentUser.name }}</p>
+      <p class="name">{{ currentUser.name }}</p>
+      <div class="mui-col-xs-7 header-left">
+        
         <p><span class="sub">Flight Number</span><br>
         <span class="sup">{{ currentUser.flightNumber }} </span><br>
         {{ currentUser.departure.airport }}</p>
       </div>
-      <div class="mui-col-xs-4 header-right">
-        {{ currentUser.departure.actualTime | date: 'shortTime' }}
-        <span>{{timeDiff}}</span>
+      <div class="mui-col-xs-3 header-right">
+        <p><span class="sub">Departure</span><br>
+          {{ currentUser.departure.actualTime | date: 'shortTime' }}</p>
+        <!--<span>{{timeDiff}}</span>-->
+      </div>
+      <div class="mui-col-xs-2 header-right">
+        <p><span class="sub">Gate</span><br>
+        A06</p>
       </div>
     </div>
   </div>

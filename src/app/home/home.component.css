@@ -13,14 +13,15 @@
     padding: 16px 16px 16px 0;
 }
 .header p{
-    padding:0!important;
-    margin:0!important;
+    padding:0;
+    margin:0;
 }
 .header p.name{
-    padding:0 0 12px;
+    padding:0 0 8px;
+    display:block;
 }
-.header p.sub{
-    color:#FFF;
+.header .sub{
+    color:#FFF;;
 }
 
 
