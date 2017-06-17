@@ -8,7 +8,7 @@
 }
 
 .mui-appbar{
-    background: rgb(25, 182, 255)!important;
+    background: rgb(3, 137, 198)!important;
 }
 
 .flight-info-btn{
@@ -19,7 +19,6 @@
 }
 .flight-info-btn i{
     vertical-align: middle;
-    font-size: 36px;
 }
 
 .header-left{
@@ -40,12 +39,13 @@
     color:#FFF;;
 }
 
-
 .timeline {
     display: flex;
     flex-direction: column;
-    margin-top: 137px;
+    margin-top: 149px;
 }
+
+.timeline .sup{font-size:16px;line-height:24px;}
 
 ul {
     list-style: none;
@@ -116,11 +116,28 @@ ul:before{
     font-size: 16px;
     line-height: 24px;
 }
+.actionItem div:first-child{
+    padding-right:16px;
+
+}
+
+.actionItem p{
+    padding: 0;
+    margin: 0;
+}
+
+.actionItem.active {
+    background-color: rgb(102, 204, 255);
+}
+
+.actionItem.active .sub {
+    color: rgba(0,0,0,0.87);
+}
 
 .actionItem.done {
-    background-color: rgb(141, 221, 102);
+    background-color: rgb(84, 196, 56);
 }
 
 .actionItem.pending {
-    background-color: rgb(234, 248, 255);
+    background-color: rgb(191, 234, 255);
 }
