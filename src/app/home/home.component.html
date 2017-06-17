@@ -23,15 +23,15 @@
 </div>
 
 <ul class="timeline">
-  <li class="time time-first"><span class="sub">Arrival time at airport</span><span>{{ dateNow | date:'shortTime' }}</span></li>
+  <li class="time time-first"><span class="sub">Arrival time at airport</span><span>{{ currentUser.createdAt | date:'shortTime' }}</span></li>
   <li *ngFor="let task of currentUser.standardTaskList; let i = index">
     <div (click)="checkItem(task)" class="mui-panel actionItem {{task.status ? 'done' : 'pending'}}">
       {{ i+1 }}
       {{task.name}}
     </div>
-    <ul *ngIf="showOptions && task.name == 'Check-In'">
+    <ul *ngIf="showOptions && i == 0">
       <li *ngFor="let store of shownStores">
-        <div (click)="checkItem(task)" class="mui-panel actionItem">
+        <div (click)="addSubtask(store)" class="mui-panel actionItem">
           <h4>{{store.title}}</h4>
           <p>Get 20% off your coffee</p>
         </div>
