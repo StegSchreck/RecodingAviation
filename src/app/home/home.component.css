@@ -19,7 +19,6 @@
 }
 .flight-info-btn i{
     vertical-align: middle;
-    font-size: 36px;
 }
 
 .header-left{
@@ -40,11 +39,10 @@
     color:#FFF;;
 }
 
-
 .timeline {
     display: flex;
     flex-direction: column;
-    margin-top: 137px;
+    margin-top: 149px;
 }
 
 ul {
@@ -115,6 +113,10 @@ ul:before{
     text-align: left;
     font-size: 16px;
     line-height: 24px;
+}
+
+.actionItem .active {
+
 }
 
 .actionItem.done {
