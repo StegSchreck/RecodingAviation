@@ -5,5 +5,6 @@ h1 {font-size:28px;line-height:36px;letter-spacing:0.2; padding: 0 0 16px}
 
 p, li{font-size:14px;line-height:20px;letter-spacing:0.2; padding: 0 0 16px}
 .sub{color:rgba(0,0,0,0.54);font-size:12px;line-height:20px;letter-spacing:0.2;padding:0 0 8px;}
+.sup{font-size:20px;line-height:28px;}
 
 .mui-panel{border-radius:4px;}
