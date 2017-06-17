@@ -1,9 +1,5 @@
 .header {
     margin-bottom: 16px;
-}
-
-.mui-appbar{
-    background: rgb(25, 182, 255)!important;
     position: fixed;
     left: 0;
     right: 0;
@@ -11,28 +7,44 @@
     z-index: 1000;
 }
 
+.mui-appbar{
+    background: rgb(25, 182, 255)!important;
+}
+
+.flight-info-btn{
+    position: absolute;
+    right: 32px;
+    top: 96px;
+    z-index: 1001;
+}
+.flight-info-btn i{
+    vertical-align: middle;
+    font-size: 36px;
+}
+
 .header-left{
-    padding: 16px;
+    padding: 0 16px 16px;
 }
 .header-right{
-    padding: 16px 16px 16px 0;
+    padding: 0px 16px 16px 0;
 }
 .header p{
-    padding:0!important;
-    margin:0!important;
+    padding:0;
+    margin:0;
 }
 .header p.name{
-    padding:0 0 12px;
+    padding:16px 16px 8px;
+    display:block;
 }
-.header p.sub{
-    color:#FFF;
+.header .sub{
+    color:#FFF;;
 }
 
 
 .timeline {
     display: flex;
     flex-direction: column;
-    margin-top: 160px;
+    margin-top: 137px;
 }
 
 ul {
