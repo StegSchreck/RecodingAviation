@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +9,17 @@ import { Observable } from 'rxjs/Observable';
 })
 export class LoginComponent implements OnInit {
 
-  user: Observable<firebase.User>;
-
   ngOnInit() {
     
   }
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
+  }
+
+  login() {
+    this.router.navigateByUrl('/home');
   }
 
 

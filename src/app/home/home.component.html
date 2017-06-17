@@ -1,0 +1,15 @@
+<div class="header">
+  <app-header></app-header>
+</div>
+
+<a routerLink="/manage">add stuff</a>
+
+<ul class="timeline">
+  <li class="time time-first">15.00</li>
+  <li *ngFor="let task of tasks; let i = index">
+    <i>{{i+1}}</i>
+
+    <app-task [task]="task"></app-task>
+  </li>
+  <li class="time time-last">17.34</li>
+</ul>

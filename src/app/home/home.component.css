@@ -1,0 +1,21 @@
+.header {
+    margin-bottom: 24px;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+}
+
+.time {
+    border: 1px solid black;
+    padding: 4px 8px
+}
+
+.time-first {
+    margin-bottom: auto;
+}
+
+.time-last {
+    margin-top: auto;
+}
