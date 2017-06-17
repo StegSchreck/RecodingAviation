@@ -60,6 +60,9 @@ export class HomeComponent implements OnInit {
     if(this.currentUser == undefined) {
       let userId = this._ps.get('userid', StorageType.SESSION);
       this._us.get( userId )
+        .then( () => {
+          this.currentUser = this._us.currentUser;
+        })
     }
 
     this._us.fetchStores()
