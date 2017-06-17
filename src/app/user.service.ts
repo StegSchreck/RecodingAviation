@@ -24,15 +24,33 @@ export class UserService {
   }
 
   public currentUser = {
+    id: '',
     name: '',
     flightNumber: '',
     mail: '',
     departure: {
       airport: '',
-      sceduledTime: '',
+      scheduledTime: '',
       actualTime: '',
       airline: ''
-    }
+    },
+    taskList: []
+  }
+
+  toggleTask( taskName, status ): Promise<any> {
+    let body = new URLSearchParams();
+    let headers = new Headers({'Content-Type': 'application/json'});
+    body.set('status', status);
+    body.set('userId', this.currentUser.id);
+    body.set('taskName', taskName)
+
+    return this.http.post(`${this.baseUrl}/users/schedule/`, 
+      body, {'headers': headers})
+      .toPromise()
+      .then(() => {
+
+      })
+      .catch( this.handleError )
   }
 
   post(mail: string, name: string, flightNumber: string, telephone: string): Promise<any> {
@@ -56,11 +74,12 @@ export class UserService {
   }
 
   private setCurrentuser( data ) {
-    let flightJson = data.json().flightJSON.flights[0]
+    let flightJson = data.json().flightJSON
 
     this.persistance.set('userid', data.json()._id, {type: StorageType.SESSION})
 
     this.currentUser = {
+      id: data.json()._id,
       name: data.json().name,
       mail: data.json().mail,
       flightNumber: data.json().flightNumber,
@@ -68,8 +87,9 @@ export class UserService {
         airport: flightJson.departureAirport,
         actualTime: flightJson.departure.actual,
         airline: flightJson.operatingAirline.name,
-        sceduledTime: flightJson.departure.sceduled,
-      }
+        scheduledTime: flightJson.departure.scheduled,
+      },
+      taskList: data.json().taskList
     }
   }
 

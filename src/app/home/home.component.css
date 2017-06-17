@@ -28,13 +28,21 @@ ul {
     margin-bottom: 12px;
 }
 
+.actionItem.done {
+    background-color: green;
+}
+
+.actionItem.pending {
+    background-color: blue;
+}
+
 .time {
     border: 1px solid black;
     padding: 4px 8px
 }
 
 .time-first {
-    margin-bottom: auto;
+    margin-bottom: 12px;
 }
 
 .time-last {
