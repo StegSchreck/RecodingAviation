@@ -54,9 +54,11 @@ export class UserService {
       airport: '',
       scheduledTime: '',
       actualTime: '',
-      airline: ''
+      airline: '',
+      gate: ''
     },
-    taskList: []
+    taskList: [],
+    standardTaskList: []
   }
 
   fetchStores(): Promise<any> {
@@ -126,8 +128,10 @@ export class UserService {
         actualTime: flightJson.departure.actual,
         airline: flightJson.operatingAirline.name,
         scheduledTime: flightJson.departure.scheduled,
+        gate: flightJson.departure.gate,
       },
-      taskList: data.json().taskList
+      taskList: data.json().taskList,
+      standardTaskList: data.json().standardTaskList
     }
 
     this.currentUser.taskList = this.currentUser.taskList.sort((left, right) => {
