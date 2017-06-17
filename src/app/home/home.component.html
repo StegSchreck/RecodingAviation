@@ -30,11 +30,23 @@
       {{task.name}}
     </div>
     <ul *ngIf="checkedIn && i == 0">
-      <li class="time time-first"><span>{{ dateNow | date:'shortTime' }}</span></li>
+      <li class="time time-last"><span>{{ dateNow | date:'shortTime' }}</span></li>
+      <li _ngcontent-rrm-3="">
+        <div _ngcontent-rrm-3="" ng-reflect-class-name="actionItem text" class="actionItem text">
+          <div>
+            <p>You now have <strong>40 minutes</strong> more until you are ready to board. How would you like to spend them?</p>
+          </div>
+        </div>
+      </li>
       <li *ngFor="let store of shownStores">
-        <div (click)="addSubtask(store)" class="mui-panel actionItem">
-          <h4>{{store.title}}</h4>
-          <p>Get 20% off your coffee</p>
+        <div (click)="addSubtask(store)" class="mui-panel actionItem options">
+          <div class="mui-col-xs-2">
+            <i class="material-icons">&#xE147;</i>
+          </div>
+          <div class="mui-col-xs-10">
+            <p class="sup">{{store.title}}</p>
+            <p>Get <strong>20%</strong> off your coffee</p>
+          </div>
         </div>
       </li>
     </ul>
@@ -56,7 +68,7 @@
 <ul _ngcontent-rrm-3="" class="timeline">
   <li _ngcontent-rrm-3="" class="time time-first"><span _ngcontent-rrm-3="" class="sub">Arrival time at airport</span><span _ngcontent-rrm-3="">10:47 PM</span></li>
   <li _ngcontent-rrm-3="">
-    <div _ngcontent-rrm-3="" ng-reflect-class-name="mui-panel mui-row actionItem done" class="mui-panel actionItem done">
+    <div _ngcontent-rrm-3="" ng-reflect-class-name="mui-panel actionItem done" class="mui-panel actionItem done">
       <div class="mui-col-xs-9">
         <p class="sup">1. Checked in.</p>
       </div>

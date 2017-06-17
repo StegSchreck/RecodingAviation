@@ -179,3 +179,15 @@ ul:before{
 .actionItem.text{
     background-color:#FFFFFF;
 }
+
+
+.actionItem.options {
+    border: 2px solid rgb(191, 234, 255);;
+    color: rgba(0,0,0,0.87);
+}
+.actionItem.options i.material-icons{    
+    position: relative;
+    margin: 50% 0 0;
+    top: -6px;
+    color:rgb(102, 204, 255);
+    box-shadow: none;}
