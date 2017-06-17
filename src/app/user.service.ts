@@ -33,12 +33,10 @@ export class UserService {
       .toPromise()
       .then( ( response ) => {
         this.setCurrentuser(response)
-        console.log('foo')
       })
       .then( () => {
         this.getAirportName(this.currentUser.departure.airport)
           .then( ( name ) => {
-            console.log( this.currentUser )
             this.currentUser.departure.airport = name
           })
       })
@@ -111,12 +109,10 @@ export class UserService {
   }
 
   private setCurrentuser( data ) {
-    console.log(data)
     let flightJson = data.json().flightJSON
 
     this.persistance.set('userid', data.json()._id, {type: StorageType.SESSION})
 
-    console.log( 'user', this.currentUser, flightJson );
 
     this.currentUser = {
       id: data.json()._id,
@@ -135,7 +131,6 @@ export class UserService {
     }
 
     this.currentUser.standardTaskList = this.currentUser.standardTaskList.sort((left, right) => {
-      console.log(left, right)
       if(left.timeStamp < right.timeStamp)
         return -1
       if(left.timeStamp > right.timeStamp)
@@ -144,14 +139,12 @@ export class UserService {
       return 0
     })
 
-    console.log( this.currentUser.taskList )
 
 
   }
 
   private handleError(error: any): Promise <any> 
   {
-    console.error( 'an error occured: ', error );
     return Promise.reject( error.message || error );
   }
 

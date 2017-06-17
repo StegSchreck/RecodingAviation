@@ -58,6 +58,10 @@ export class HomeComponent implements OnInit {
 
   }
 
+  addSubtask(store) {
+    console.log( store )
+  }
+
 
   ngOnInit() {
     this.tasks = this._ts.getTasks();
@@ -68,12 +72,13 @@ export class HomeComponent implements OnInit {
       this._us.get( userId )
         .then( () => {
           this.currentUser = this._us.currentUser;
+          if( this.currentUser.standardTaskList[0].status )
+            this.showOptions = true
         })
     }
 
     this._us.fetchStores()
       .then( ( stores ) => {
-        console.log( stores )
         this.stores = stores;
         let temp = true;
 
