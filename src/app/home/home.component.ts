@@ -17,6 +17,9 @@ export class HomeComponent implements OnInit {
   private dateNow;
   private departureTime;
 
+
+  private currentUser;
+
   constructor(
     private _ts: TasksService,
     private _us: UserService
@@ -26,11 +29,8 @@ export class HomeComponent implements OnInit {
     this.tasks = this._ts.getTasks();
     this.dateNow = Date.now();
 
-    this._us.get()
-      .then( resp => {
-        console.log( resp )
-      } )
-    console.log();
+    this.currentUser = this._us.currentUser
+
 
   }
 

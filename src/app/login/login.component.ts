@@ -22,7 +22,11 @@ export class LoginComponent implements OnInit {
   login() {
     // this.router.navigateByUrl('/home');
 
-    this._us.post()
+    this._us.post(
+      'me@example.com', 
+      'Smith',
+      'EW1940',
+      '')
       .then( () => {
         console.log( 'I am in!' );
       } )

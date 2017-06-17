@@ -12,7 +12,7 @@ export class UserService {
     private http: Http
   ) { }
 
-  get(): Promise<any> {
+  gets(): Promise<any> {
     return this.http.get(`${this.baseUrl}/users`)
       .toPromise()
       .then( response => {
@@ -21,10 +21,35 @@ export class UserService {
       .catch( this.handleError );
   }
 
-  post(): Promise<any> {
+  // get(): Promise<any> {
+  //   return this.http.get(`${this.baseUrl}/users`)
+  //     .toPromise()
+  //     .then( response => {
+  //       return response.json().data || response.json();
+  //     })
+  //     .catch( this.handleError );
+  // }
+  public currentUser = {
+    name: '',
+    flightNumber: '',
+    mail: '',
+    departure: {
+      airport: '',
+      sceduledTime: '',
+      actualTime: '',
+      airline: ''
+    }
+  }
+
+  post(mail: string, name: string, flightNumber: string, telephone: string): Promise<any> {
+
     let body = new URLSearchParams();
-    body.set('mail', 'me@example.com');
-    body.set('flightNumber', 'EW1940');
+    body.set('mail', mail);
+    body.set('flightNumber', flightNumber);
+
+    this.currentUser.name = name;
+    this.currentUser.flightNumber = flightNumber;
+    this.currentUser.mail = mail;
 
     return this.http.post(`${this.baseUrl}/users`, 
       body, {
@@ -33,11 +58,10 @@ export class UserService {
     )
       .toPromise()
       .then( ( response ) => {
-        console.log( response );
+        console.log( response.json().data );
+        // this.currentUser.flightNumber = response.json().data
       })
       .catch( this.handleError );
-
-
   }
 
   private handleError(error: any): Promise <any> 

@@ -1,5 +1,14 @@
 <div class="header">
-  <app-header></app-header>
+  <div class="mui-appbar mui--z1">
+    <div class="mui-container mui-row">
+      <div class="mui-col-xs-8">
+        {{ currentUser.name }}<br>
+        {{currentUser.flightNumber}} <br>
+        {{ currentUser.departure.airport }}
+      </div>
+      <div class="mui-col-xs-4">Departs canceld</div>
+    </div>
+  </div>
 </div>
 
 <ul class="timeline">
