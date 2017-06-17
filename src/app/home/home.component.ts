@@ -1,3 +1,4 @@
+import { TasksService } from './../tasks.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,15 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  private tasks = [
-    "Already checked in?",
-    "We will alert you when your gate is open.",
-    "We will alert you when you can board"
-  ];
+  private tasks = [];
 
-  constructor() { }
+  constructor(private _ts: TasksService) { }
 
   ngOnInit() {
+    this.tasks = this._ts.getTasks();
   }
 
 }
