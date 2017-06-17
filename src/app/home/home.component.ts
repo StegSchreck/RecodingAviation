@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   private stores = [];
   private shownStores = [];
 
-  private showOptions = false;
+  private checkedIn = false;
 
   private eat = [];
   private shop = [];
@@ -45,14 +45,17 @@ export class HomeComponent implements OnInit {
   }
 
   checkItem( task ) {
+    if( task.status )
+      return;
+
     this._us.toggleTask(task.name, !task.status)
       .then( () => {
         task.status = !task.status
 
         if( task.status && task.name == "Check-in" ) {
-          this.showOptions = true
+          this.checkedIn = true
         } else if( !task.status && task.name == "Check-in" ) {
-          this.showOptions = false
+          this.checkedIn = false
         }
       })
 
@@ -73,7 +76,7 @@ export class HomeComponent implements OnInit {
         .then( () => {
           this.currentUser = this._us.currentUser;
           if( this.currentUser.standardTaskList[0].status )
-            this.showOptions = true
+            this.checkedIn = true
         })
     }
 

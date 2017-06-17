@@ -1,4 +1,4 @@
-import { ManageTimeComponent } from './manage-time/manage-time.component';
+import { OverviewComponent } from './overview/overview.component';
 import { HomeComponent } from './home/home.component';
 import { LandingComponent } from './landing/landing.component';
 import { NgModule }             from '@angular/core';
@@ -8,7 +8,7 @@ const routes: Routes = [
     { "path": '', "redirectTo": '/login', "pathMatch": 'full' },
     { "path": 'login',  "component": LandingComponent},
     { "path": 'home',  "component": HomeComponent},
-    { "path": 'manage',  "component": ManageTimeComponent},
+    { "path": 'overview',  "component": OverviewComponent},
     { "path": '**',  "redirectTo": "login" }
 ]
 

@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { LandingComponent } from './landing/landing.component';
 import { TaskComponent } from './task/task.component';
 import { ManageTimeComponent } from './manage-time/manage-time.component';
+import { OverviewComponent } from './overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ManageTimeComponent } from './manage-time/manage-time.component';
     HomeComponent,
     LandingComponent,
     TaskComponent,
-    ManageTimeComponent
+    ManageTimeComponent,
+    OverviewComponent
   ],
   imports: [
     BrowserModule,

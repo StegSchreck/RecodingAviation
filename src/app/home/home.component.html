@@ -19,7 +19,7 @@
       </div>
     </div>
   </div>
-  <button (click)="logout()" class="flight-info-btn mui-btn mui-btn--fab"><i class="material-icons md-36">&#xE5D3;</i></button>
+  <a routerLink="/overview" class="flight-info-btn mui-btn mui-btn--fab"><i class="material-icons md-36">&#xE5D3;</i></a>
 </div>
 
 <ul class="timeline">
@@ -29,7 +29,8 @@
       {{ i+1 }}
       {{task.name}}
     </div>
-    <ul *ngIf="showOptions && i == 0">
+    <ul *ngIf="checkedIn && i == 0">
+      <li class="time time-first"><span>{{ dateNow | date:'shortTime' }}</span></li>
       <li *ngFor="let store of shownStores">
         <div (click)="addSubtask(store)" class="mui-panel actionItem">
           <h4>{{store.title}}</h4>
