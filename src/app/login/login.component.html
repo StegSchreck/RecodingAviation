@@ -8,26 +8,26 @@
         Register for free Wifi & Your <strong>personalised Airport experience</strong> connected with your Flight information.
       </p>
   </div>
-  <form action="" class="mui-form">
+  <div class="mui-form">
     <div class="mui-panel">
       <div class="mui-textfield mui-textfield--float-label">
-        <input type="text" >
+        <input [(ngModel)]="loginForm.name" type="text" >
         <label>Fullname</label>
       </div>
       <div class="mui-textfield mui-textfield--float-label">
-        <input type="email" >
+        <input [(ngModel)]="loginForm.email" type="email" >
         <label>E-mail</label>
       </div>
       <!--<div class="mui-textfield">
         <input type="password" placeholder="Password">
       </div>-->
       <div class="mui-textfield mui-textfield--float-label">
-        <input type="text" >
+        <input [(ngModel)]="loginForm.flightNumber" type="text" >
         <label>Flight number</label>
       </div>
       <p class="sub">Please provide your telephone number if you would like alerts when your flight is ready.</p>
       <div class="mui-textfield mui-textfield--float-label">
-        <input type="text" >
+        <input [(ngModel)]="loginForm.tel" type="text" >
         <label>Telphone number</label>
       </div>
       <div class="mui--text-right">
@@ -36,5 +36,5 @@
     </div>
     
     
-  </form>
+  </div>
 </div>

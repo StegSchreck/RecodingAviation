@@ -28,8 +28,6 @@ export class HomeComponent implements OnInit {
 
   private airportFullName = ""
 
-
-
   private currentUser;
 
   constructor(

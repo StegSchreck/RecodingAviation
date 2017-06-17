@@ -22,6 +22,13 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  private loginForm = {
+    email: '',
+    tel: '',
+    name: '',
+    flightNumber: ''
+  }
+
   constructor(
     private router: Router,
     private _us: UserService,
@@ -31,10 +38,10 @@ export class LoginComponent implements OnInit {
 
   login() {
     this._us.post(
-      'matthiasklebe+spam@gmail.com', 
-      'Smith',
-      'EW1940',
-      '')
+      this.loginForm.email, 
+      this.loginForm.name,
+      this.loginForm.flightNumber,
+      this.loginForm.tel)
       .then( () => {
         this.router.navigateByUrl('/home');
       } )
