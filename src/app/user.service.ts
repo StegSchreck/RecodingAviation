@@ -6,6 +6,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserService {
+  // baseUrl: string = "http://192.168.24.30:3000";
   baseUrl: string = "http://192.168.16.191:3000";
   private headers: Headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 
@@ -37,15 +38,28 @@ export class UserService {
     taskList: []
   }
 
+  fetchStores(): Promise<any> {
+    return this.http.get(`${this.baseUrl}/services`)
+      .toPromise()
+      .then( (response) => {
+        return response.json().services;
+      })
+  }
+
+  fetchNotifications(): Promise<any> {
+    return this.http.get(`${this.baseUrl}/services`)
+      .toPromise()
+      .then( (response) => {
+        return response.json().services;
+      })
+  }
+
   toggleTask( taskName, status ): Promise<any> {
     let body = new URLSearchParams();
     let headers = new Headers({'Content-Type': 'application/json'});
-    body.set('status', status);
-    body.set('userId', this.currentUser.id);
-    body.set('taskName', taskName)
 
     return this.http.post(`${this.baseUrl}/users/schedule/`, 
-      body, {'headers': headers})
+      {status: status, userId: this.currentUser.id, taskName: taskName}, {'headers': headers})
       .toPromise()
       .then(() => {
 

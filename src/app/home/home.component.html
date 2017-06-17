@@ -22,3 +22,11 @@
 
   <li class="time time-last">{{ currentUser.departure.actualTime | date:'shortTime' }}</li>
 </ul>
+
+<ul>
+  <li *ngFor="let option of eat">
+    {{ option.title }}
+  </li>
+</ul>
+
+{{ timeToDeparture }}

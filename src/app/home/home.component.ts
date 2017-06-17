@@ -13,6 +13,16 @@ export class HomeComponent implements OnInit {
   private dateNow;
   private departureTime;
   private timeDiff: any;
+  private timeToDeparture;
+
+  private stores = [];
+  private shownStores = [];
+
+  private eat = [];
+  private shop = [];
+  private newspaper = [];
+  private souvenir = [];
+
 
 
   private currentUser;
@@ -32,24 +42,26 @@ export class HomeComponent implements OnInit {
 
   }
 
+
   ngOnInit() {
     this.tasks = this._ts.getTasks();
     this.dateNow = Date.now();
+
+    this._us.fetchStores()
+      .then( ( stores ) => {
+        this.stores = stores;
+        let temp = true;
+
+        this.shownStores = stores.splice(0, 4)
+
+      });
 
     this.currentUser = this._us.currentUser
     let scheduled = new Date(this.currentUser.departure.scheduledTime);
 
     let actual = new Date(this.currentUser.departure.actualTime)
 
-    this.timeDiff = (scheduled.getTime() - actual.getTime()) / 1000 / 60
-
-
+    this.timeDiff = (scheduled.getTime() - actual.getTime()) / 1000 / 60;
+    this.timeToDeparture = Math.abs(Math.round((actual.getTime() - new Date().getTime()) / 1000 / 60) );
   }
-
-  passSecurityCheck() {
-    // this.checkedIn = true;
-  }
-
-
-
 }
