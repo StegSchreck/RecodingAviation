@@ -1,26 +1,40 @@
-<div class="mui-container form-container">
-  <h1 class="mui--text-display2">
+<div class="login mui-container form-container">
+  <img class="logo" src="/assets/logo.jpg" alt="Munich Airport Logo" />
+  <h1>
     Welcome to Munich Airport
   </h1>
-  <h2 class="mui--text-subhead">
-    Please register for free wifi & personalised flight information
-  </h2>
+  <div class="mui-container form-container">
+  <p>
+        Register for free Wifi & Your <strong>personalised Airport experience</strong> connected with your Flight information.
+      </p>
+  </div>
   <form action="" class="mui-form">
-    <div class="mui-textfield">
-      <input type="email" placeholder="E-Mail">
+    <div class="mui-panel">
+      <div class="mui-textfield mui-textfield--float-label">
+        <input type="text" >
+        <label>Surname</label>
+      </div>
+      <div class="mui-textfield mui-textfield--float-label">
+        <input type="email" >
+        <label>E-mail</label>
+      </div>
+      <!--<div class="mui-textfield">
+        <input type="password" placeholder="Password">
+      </div>-->
+      <div class="mui-textfield mui-textfield--float-label">
+        <input type="text" >
+        <label>Flight number</label>
+      </div>
+      <p class="sub">Please provide your telephone number if you would like alerts when your flight is ready.</p>
+      <div class="mui-textfield mui-textfield--float-label">
+        <input type="text" >
+        <label>Telphone number</label>
+      </div>
+      <div class="mui--text-right">
+        <button class="mui-btn mui-btn--primary" (click)="login()">Let's Go!</button>
+      </div>
     </div>
-    <div class="mui-textfield">
-      <input type="password" placeholder="Password">
-    </div>
-    <div class="mui-textfield">
-      <input type="text" placeholder="Boarding Pass">
-    </div>
-    <p>For an alert when your Flight is ready</p>
-    <div class="mui-textfield">
-      <input type="tel" placeholder="Telephone Number">
-    </div>
-    <div class="mui--text-right">
-      <button class="mui-btn mui-btn--primary" (click)="login()">Let's Go!</button>
-    </div>
+    
+    
   </form>
 </div>
