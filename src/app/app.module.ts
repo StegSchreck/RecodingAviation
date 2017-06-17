@@ -1,3 +1,4 @@
+import { PersistenceModule } from 'angular-persistence';
 import { UserService } from './user.service';
 import { TasksService } from './tasks.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +29,8 @@ import { ManageTimeComponent } from './manage-time/manage-time.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PersistenceModule
   ],
   providers: [TasksService, UserService],
   bootstrap: [AppComponent]

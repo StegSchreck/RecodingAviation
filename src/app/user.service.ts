@@ -1,3 +1,4 @@
+import { PersistenceService, StorageType } from 'angular-persistence';
 import { Http, Headers, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
 
@@ -9,26 +10,19 @@ export class UserService {
   private headers: Headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 
   constructor(
-    private http: Http
+    private http: Http,
+    private persistance: PersistenceService
   ) { }
 
-  gets(): Promise<any> {
-    return this.http.get(`${this.baseUrl}/users`)
+  get( userId: string ): Promise<any> {
+    return this.http.get(`${this.baseUrl}/users/${userId}`)
       .toPromise()
-      .then( response => {
-        return response.json().data || response.json();
+      .then( ( response ) => {
+        this.setCurrentuser(response)
       })
       .catch( this.handleError );
   }
 
-  // get(): Promise<any> {
-  //   return this.http.get(`${this.baseUrl}/users`)
-  //     .toPromise()
-  //     .then( response => {
-  //       return response.json().data || response.json();
-  //     })
-  //     .catch( this.handleError );
-  // }
   public currentUser = {
     name: '',
     flightNumber: '',
@@ -42,14 +36,12 @@ export class UserService {
   }
 
   post(mail: string, name: string, flightNumber: string, telephone: string): Promise<any> {
-
     let body = new URLSearchParams();
     body.set('mail', mail);
     body.set('flightNumber', flightNumber);
+    body.set('name', name);
+    body.set('tel', telephone);
 
-    this.currentUser.name = name;
-    this.currentUser.flightNumber = flightNumber;
-    this.currentUser.mail = mail;
 
     return this.http.post(`${this.baseUrl}/users`, 
       body, {
@@ -58,10 +50,27 @@ export class UserService {
     )
       .toPromise()
       .then( ( response ) => {
-        console.log( response.json().data );
-        // this.currentUser.flightNumber = response.json().data
+        this.setCurrentuser(response)
       })
       .catch( this.handleError );
+  }
+
+  private setCurrentuser( data ) {
+    let flightJson = data.json().flightJSON.flights[0]
+
+    this.persistance.set('userid', data.json()._id, {type: StorageType.SESSION})
+
+    this.currentUser = {
+      name: data.json().name,
+      mail: data.json().mail,
+      flightNumber: data.json().flightNumber,
+      departure : {
+        airport: flightJson.departureAirport,
+        actualTime: flightJson.departure.actual,
+        airline: flightJson.operatingAirline.name,
+        sceduledTime: flightJson.departure.sceduled,
+      }
+    }
   }
 
   private handleError(error: any): Promise <any> 
