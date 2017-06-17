@@ -57,7 +57,6 @@ export class UserService {
       gate: ''
     },
     taskList: [],
-    standardTaskList: []
   }
 
   // addSubtask(  ): Promise<any> {
@@ -136,10 +135,9 @@ export class UserService {
         gate: flightJson.departure.gate,
       },
       taskList: data.json().taskList,
-      standardTaskList: data.json().standardTaskList
     }
 
-    this.currentUser.standardTaskList = this.currentUser.standardTaskList.sort((left, right) => {
+    this.currentUser.taskList = this.currentUser.taskList.sort((left, right) => {
       if(left.timeStamp < right.timeStamp)
         return -1
       if(left.timeStamp > right.timeStamp)

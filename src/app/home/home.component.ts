@@ -20,12 +20,7 @@ export class HomeComponent implements OnInit {
   private stores = [];
   private shownStores = [];
 
-  private checkedIn = false;
-
-  private eat = [];
-  private shop = [];
-  private newspaper = [];
-  private souvenir = [];
+  private showOptions = false;
 
   private airportFullName = ""
 
@@ -39,23 +34,16 @@ export class HomeComponent implements OnInit {
 
   ) { }
 
-  logout() {
-    this._ps.removeAll()
-    this.router.navigateByUrl('/login')
-  }
-
   checkItem( task ) {
-    if( task.status )
-      return;
-
+    console.log( task )
     this._us.toggleTask(task.name, !task.status)
       .then( () => {
         task.status = !task.status
 
         if( task.status && task.name == "Check-in" ) {
-          this.checkedIn = true
+          this.showOptions = true
         } else if( !task.status && task.name == "Check-in" ) {
-          this.checkedIn = false
+          this.showOptions = false
         }
       })
 
@@ -75,8 +63,8 @@ export class HomeComponent implements OnInit {
       this._us.get( userId )
         .then( () => {
           this.currentUser = this._us.currentUser;
-          if( this.currentUser.standardTaskList[0].status )
-            this.checkedIn = true
+          if( this.currentUser.taskList[0].status )
+            this.showOptions = true
         })
     }
 
