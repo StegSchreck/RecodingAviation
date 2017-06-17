@@ -33,6 +33,7 @@ export class UserService {
       .toPromise()
       .then( ( response ) => {
         this.setCurrentuser(response)
+        console.log('foo')
       })
       .then( () => {
         this.getAirportName(this.currentUser.departure.airport)
@@ -108,9 +109,12 @@ export class UserService {
   }
 
   private setCurrentuser( data ) {
+    console.log(data)
     let flightJson = data.json().flightJSON
 
     this.persistance.set('userid', data.json()._id, {type: StorageType.SESSION})
+
+    console.log( 'user', this.currentUser, flightJson );
 
     this.currentUser = {
       id: data.json()._id,

@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     console.log('init login')
     let userId = this._ps.get('userid', StorageType.SESSION);
-    console.log( userId )
     if( userId ) {
       this._us.get(userId)
         .then( (response) => {
