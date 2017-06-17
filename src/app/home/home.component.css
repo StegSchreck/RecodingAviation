@@ -17,6 +17,10 @@
     top: 96px;
     z-index: 1001;
 }
+.flight-info-btn i{
+    vertical-align: middle;
+    font-size: 36px;
+}
 
 .header-left{
     padding: 0 16px 16px;
