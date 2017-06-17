@@ -22,6 +22,9 @@ export class HomeComponent implements OnInit {
 
   private checkedIn;
 
+  private timeToSecurity;
+  private timeToBoard;
+
   private airportFullName = ""
 
   private currentUser;

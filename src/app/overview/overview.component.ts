@@ -1,3 +1,4 @@
+import { TasksService } from './../tasks.service';
 import { PersistenceService, StorageType } from 'angular-persistence';
 import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +17,8 @@ export class OverviewComponent implements OnInit {
 
   constructor(
     private _us: UserService,
-    private _ps: PersistenceService
+    private _ps: PersistenceService,
+    private _ts: TasksService
   ) { }
 
   ngOnInit() {
