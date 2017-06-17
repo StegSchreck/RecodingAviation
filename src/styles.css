@@ -3,5 +3,7 @@ body {font-family: 'Roboto', sans-serif; color: rgba(0,0,0,0.87)}
 h1,h2,h3,h4,h5,h6 {font-family: 'PT Sans', sans-serif;}
 h1 {font-size:28px;line-height:36px;letter-spacing:0.2; padding: 0 0 16px}
 
-p{font-size:14px;line-height:20px;letter-spacing:0.2; padding: 0 0 16px}
-p.sub{color:rgba(0,0,0,0.54);font-size:12px;line-height:20px;letter-spacing:0.2;}
+p, li{font-size:14px;line-height:20px;letter-spacing:0.2; padding: 0 0 16px}
+.sub{color:rgba(0,0,0,0.54);font-size:12px;line-height:20px;letter-spacing:0.2;padding:0 0 8px;}
+
+.mui-panel{border-radius:4px;}

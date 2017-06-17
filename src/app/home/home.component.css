@@ -1,5 +1,9 @@
 .header {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
+}
+
+.mui-appbar{
+    background: rgb(102, 204, 255)!important;
 }
 
 .timeline {
@@ -12,20 +16,69 @@ ul {
     padding: 0 16px;
     margin: 0;
     text-align: center;
+    position: relative;
 }
 
-.time-first {
-    margin-bottom: 12px;
+ul:before{
+    content:"";
+    position: absolute;
+    left:50%;
+    top:91px;
+    bottom:91px;
+    width:1px;
+    background: rgba(0,0,0,0.12);
+    z-index: -1;
 }
 
-.time {
+.time span.sub{
+    padding: 8px;
+    display: block;
+}
+.time-first span:last-child,.time-last span:first-child{
     display: inline-block;
+    background: rgba(0,0,0,0.04);
+    padding: 8px 12px;
+    font-weight: bold;
+}
+
+.time-first{
+    margin: 0 0 20px;
+}
+
+.time-first:after {
+    content: "";
+    height: 11px;
+    width: 11px;
+    border-radius: 5px;
+    background: rgba(0,0,0,0.12);
+    display: block;
+    left: 50%;
+    position: absolute;
+    margin: 8px 0 0 -5px;
+}
+
+.time-last{
+    margin: 20px 0 0;
+    padding: 16px 0 0;
+}
+.time-last:before {
+    content: "";
+    height: 11px;
+    width: 11px;
+    border-radius: 5px;
+    background: rgba(0,0,0,0.12);
+    display: block;
+    left: 50%;
+    position: absolute;
+    margin: -19px 0 0 -5px;
 }
 
 .actionItem {
-    border: 1px solid black;
-    padding: 8px;
-    margin-bottom: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    text-align: left;
+    font-size: 16px;
+    line-height: 24px;
 }
 
 .actionItem.done {
@@ -33,18 +86,5 @@ ul {
 }
 
 .actionItem.pending {
-    background-color: blue;
-}
-
-.time {
-    border: 1px solid black;
-    padding: 4px 8px
-}
-
-.time-first {
-    margin-bottom: 12px;
-}
-
-.time-last {
-    margin-top: auto;
+    background-color: rgb(234, 248, 255);
 }

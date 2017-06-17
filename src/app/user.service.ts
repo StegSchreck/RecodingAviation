@@ -10,16 +10,36 @@ export class UserService {
   baseUrl: string = "http://192.168.16.191:3000";
   private headers: Headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 
+  private mucUrl = "https://api-dev.munich-airport.de/aci-airport-v1/detail/iata";
+
   constructor(
     private http: Http,
     private persistance: PersistenceService
   ) { }
+
+  getAirportName( shortForm ): Promise<any> {
+    let header = new Headers({'X-apiKey': 'd017a45398ba4a8e14b7fe534fb9b54a'})
+    return this.http.get(`${this.mucUrl}/${shortForm}/`, {headers: header})
+      .toPromise()
+      .then( ( resp ) => {
+
+        return resp.json().airportName;
+      } )
+
+  }
 
   get( userId: string ): Promise<any> {
     return this.http.get(`${this.baseUrl}/users/${userId}`)
       .toPromise()
       .then( ( response ) => {
         this.setCurrentuser(response)
+      })
+      .then( () => {
+        this.getAirportName(this.currentUser.departure.airport)
+          .then( ( name ) => {
+            console.log( this.currentUser )
+            this.currentUser.departure.airport = name
+          })
       })
       .catch( this.handleError );
   }
@@ -105,6 +125,20 @@ export class UserService {
       },
       taskList: data.json().taskList
     }
+
+    this.currentUser.taskList = this.currentUser.taskList.sort((left, right) => {
+      console.log(left, right)
+      if(left.timeStamp < right.timeStamp)
+        return -1
+      if(left.timeStamp > right.timeStamp)
+        return 1
+
+      return 0
+    })
+
+    console.log( this.currentUser.taskList )
+
+
   }
 
   private handleError(error: any): Promise <any> 

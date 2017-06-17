@@ -23,6 +23,8 @@ export class HomeComponent implements OnInit {
   private newspaper = [];
   private souvenir = [];
 
+  private airportFullName = ""
+
 
 
   private currentUser;
@@ -56,7 +58,9 @@ export class HomeComponent implements OnInit {
 
       });
 
+
     this.currentUser = this._us.currentUser
+
     let scheduled = new Date(this.currentUser.departure.scheduledTime);
 
     let actual = new Date(this.currentUser.departure.actualTime)

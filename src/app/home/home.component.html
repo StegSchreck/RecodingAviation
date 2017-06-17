@@ -15,12 +15,13 @@
 </div>
 
 <ul class="timeline">
-  <li class="time time-first">{{ dateNow | date:'shortTime' }}</li>
-  <li (click)="checkItem(task)" class="actionItem {{task.status ? 'done' : 'pending'}}" *ngFor="let task of currentUser.taskList; let i = index">
+  <li class="time time-first"><span class="sub">Arrival time at airport</span><span>{{ dateNow | date:'shortTime' }}</span></li>
+  <li (click)="checkItem(task)" class="mui-panel actionItem {{task.status ? 'done' : 'pending'}}" *ngFor="let task of currentUser.taskList; let i = index">
     {{task.name}}
   </li>
 
-  <li class="time time-last">{{ currentUser.departure.actualTime | date:'shortTime' }}</li>
+
+  <li class="time time-last"><span>{{ currentUser.departure.actualTime | date:'shortTime' }}</span><span class="sub">Flight departure time</span></li>
 </ul>
 
 <ul>
@@ -30,3 +31,5 @@
 </ul>
 
 {{ timeToDeparture }}
+  
+
