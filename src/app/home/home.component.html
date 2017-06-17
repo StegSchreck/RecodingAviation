@@ -19,12 +19,12 @@
       </div>
     </div>
   </div>
-  <a routerLink="/overview" class="flight-info-btn mui-btn mui-btn--fab"><i class="material-icons md-36">&#xE5D3;</i></a>
+  <!-- <a routerLink="/overview" class="flight-info-btn mui-btn mui-btn--fab"><i class="material-icons md-36">&#xE5D3;</i></a> -->
 </div>
 
 <ul class="timeline">
   <li class="time time-first"><span class="sub">Arrival time at airport</span><span>{{ currentUser.createdAt | date:'shortTime' }}</span></li>
-  <li *ngFor="let task of currentUser.taskList; let i = index">
+  <li *ngFor="let task of currentUser.mainTasks; let i = index">
     <div (click)="checkItem(task)" class="mui-panel actionItem {{task.status ? 'done' : 'pending'}}">
       {{ i+1 }}
       {{task.name}}

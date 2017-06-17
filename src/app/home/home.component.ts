@@ -56,6 +56,9 @@ export class HomeComponent implements OnInit {
     console.log( store )
   }
 
+  private mainTasks = [];
+  private optionalTasks = [];
+
 
   ngOnInit() {
     this.tasks = this._ts.getTasks();
@@ -71,20 +74,25 @@ export class HomeComponent implements OnInit {
         })
     }
 
+    this.currentUser = this._us.currentUser;
+
+    this.currentUser.taskList.forEach(element => {
+      console.log( element )
+      if( element.mandatory )
+        this.mainTasks.push( element )
+      else
+        this.optionalTasks.push( element )
+    });
+
     this._us.fetchStores()
       .then( ( stores ) => {
         this.stores = stores;
         let temp = true;
 
         this.shownStores = stores.splice(0, 4)
-
       });
 
-
-    this.currentUser = this._us.currentUser
-
     let scheduled = new Date(this.currentUser.departure.scheduledTime);
-
     let actual = new Date(this.currentUser.departure.actualTime)
 
     this.timeDiff = (scheduled.getTime() - actual.getTime()) / 1000 / 60;
