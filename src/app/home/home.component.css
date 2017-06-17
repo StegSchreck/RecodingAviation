@@ -179,3 +179,9 @@ ul:before{
 .actionItem.text{
     background-color:#FFFFFF;
 }
+
+
+.actionItem.options {
+    border: 2px solid rgb(191, 234, 255);;
+    color: rgba(0,0,0,0.87);
+}
