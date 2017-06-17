@@ -1,3 +1,4 @@
+import { PersistenceService, StorageType } from 'angular-persistence';
 import { UserService } from './../user.service';
 import { TasksService } from './../tasks.service';
 import { Component, OnInit } from '@angular/core';
@@ -33,7 +34,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private _ts: TasksService,
-    private _us: UserService
+    private _us: UserService,
+    private _ps: PersistenceService
   ) { }
 
   checkItem( task ) {
@@ -55,8 +57,14 @@ export class HomeComponent implements OnInit {
     this.tasks = this._ts.getTasks();
     this.dateNow = Date.now();
 
+    if(this.currentUser == undefined) {
+      let userId = this._ps.get('userid', StorageType.SESSION);
+      this._us.get( userId )
+    }
+
     this._us.fetchStores()
       .then( ( stores ) => {
+        console.log( stores )
         this.stores = stores;
         let temp = true;
 
