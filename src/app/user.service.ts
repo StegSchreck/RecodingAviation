@@ -44,6 +44,7 @@ export class UserService {
   }
 
   public currentUser = {
+    createdAt: '',
     id: '',
     name: '',
     flightNumber: '',
@@ -58,6 +59,10 @@ export class UserService {
     taskList: [],
     standardTaskList: []
   }
+
+  // addSubtask(  ): Promise<any> {
+  //   // return this.http.
+  // }
 
   fetchStores(): Promise<any> {
     return this.http.get(`${this.baseUrl}/services`)
@@ -115,6 +120,7 @@ export class UserService {
 
 
     this.currentUser = {
+      createdAt: data.json().Created_date,
       id: data.json()._id,
       name: data.json().name,
       mail: data.json().mail,

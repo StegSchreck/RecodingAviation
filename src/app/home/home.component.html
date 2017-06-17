@@ -23,7 +23,7 @@
 </div>
 
 <ul class="timeline">
-  <li class="time time-first"><span class="sub">Arrival time at airport</span><span>{{ dateNow | date:'shortTime' }}</span></li>
+  <li class="time time-first"><span class="sub">Arrival time at airport</span><span>{{ currentUser.createdAt | date:'shortTime' }}</span></li>
   <li *ngFor="let task of currentUser.standardTaskList; let i = index">
     <div (click)="checkItem(task)" class="mui-panel actionItem {{task.status ? 'done' : 'pending'}}">
       {{ i+1 }}
