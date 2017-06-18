@@ -176,6 +176,11 @@ ul:before{
     border-radius: 0;
 }
 
+.hurztime {
+    color: rgb(0, 120, 175);
+    text-align: right;
+}
+
 .actionItem.text{
     background-color:#FFFFFF;
 }

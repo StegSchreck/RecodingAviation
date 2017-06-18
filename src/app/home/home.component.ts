@@ -26,6 +26,10 @@ export class HomeComponent implements OnInit {
 
   private timeToSecurity;
   private timeToBoard;
+  private dateBoarding;
+  private dateSecurity;
+  private dateCheckin;
+  private dateBaggage;
 
   private airportFullName = ""
 
@@ -38,6 +42,10 @@ export class HomeComponent implements OnInit {
     private router: Router
 
   ) { }
+
+  toggleSubtask( task ) {
+    task.done = true;
+  }
 
 
 
@@ -65,7 +73,10 @@ export class HomeComponent implements OnInit {
   }
 
   addSubtask(store) {
-    console.log( store )
+    console.log( store );
+    this.timeToSecurity -= 10
+    this.optionalTasks.push( store );
+    this.shownStores = this.shownStores.filter( ( current ) => current.title != store.title);
   }
 
   private mainTasks = [];
@@ -95,6 +106,11 @@ export class HomeComponent implements OnInit {
           })
 
           console.log( this.dateNow, new Date(this.mainTasks[1].timeStamp).getTime() );
+
+          this.dateBoarding = new Date(this.mainTasks[2].timeStamp).getTime();
+          this.dateSecurity = new Date(this.mainTasks[1].timeStamp).getTime();
+          this.dateCheckin = new Date(this.mainTasks[0].timeStamp).getTime();
+          this.dateBaggage = new Date(this.mainTasks[3].timeStamp).getTime();
 
           this.timeToSecurity = Math.round((new Date(this.mainTasks[1].timeStamp).getTime() - this.dateNow) / 1000 / 60);
 
