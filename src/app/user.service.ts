@@ -6,8 +6,8 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserService {
-  //baseUrl: string = "http://192.168.24.30:3000";
-  baseUrl: string = "http://192.168.16.191:3000";
+  baseUrl: string = "http://192.168.24.30:3000";
+  //baseUrl: string = "http://192.168.16.191:3000";
   private headers: Headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 
   private mucUrl = "https://api-dev.munich-airport.de/aci-airport-v1/detail/iata";
