@@ -44,6 +44,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   toggleSubtask( task ) {
+    this.timeToSecurity += 10;
     task.done = true;
   }
 

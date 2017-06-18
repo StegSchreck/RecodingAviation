@@ -26,7 +26,7 @@
   <li class="time time-first"><span class="sub">Arrival time at airport</span><span>{{ currentUser.createdAt | date:'shortTime' }}</span></li>
   <li *ngFor="let task of mainTasks; let i = index">
     <div (click)="checkItem(task)">
-      <div class="mui-panel actionItem {{task.status ? 'done' : 'active'}}" *ngIf="i == 0 && checkedIn && dateNow > dateBoarding">
+      <div class="mui-panel actionItem {{task.status ? 'done' : 'active'}}" *ngIf="i == 0 && checkedIn && dateNow > dateCheckin">
         <div class="mui-col-xs-9">
           <p class="sup">1. Checked in.</p>
         </div>
@@ -34,7 +34,7 @@
           <i class="material-icons">&#xE5CA;</i>
         </div>
       </div>
-      <div class="mui-panel actionItem {{task.status ? 'done' : 'active'}}" *ngIf="i == 0 && !checkedIn && dateNow > dateBoarding">
+      <div class="mui-panel actionItem {{task.status ? 'done' : 'active'}}" *ngIf="i == 0 && !checkedIn && dateNow > dateCheckin">
         <div class="mui-col-xs-9">
           <p class="sup">1. Checked in.</p>
           <p class="sub">Are you ready to check in ?</p>
@@ -43,7 +43,7 @@
           <p class="check"><span>Done?</span></p>
         </div>
       </div>
-      <div class="mui-panel actionItem pending" *ngIf="i == 0 && dateNow < dateBoarding">
+      <div class="mui-panel actionItem pending" *ngIf="i == 0 && dateNow < dateCheckin">
         <div class="mui-col-xs-12">
           <p class="sup">1. Check in.</p>
           <p class="sub">We will notify you, when the Check-In is ready</p>
@@ -98,13 +98,13 @@
       </div>
 
 
-      <div class="mui-panel actionItem active" *ngIf="i == 3 && !boarded && dateNow > dateBoarding">
+      <div class="mui-panel actionItem active" *ngIf="i == 3 && dateNow > dateBoarding">
         <div class="mui-col-xs-12">
           <p class="sup">4. Baggage claim.</p>
           <p class="sub">You will can find your Baggage at Terminal 3 </p>
         </div>
       </div>
-      <div class="mui-panel actionItem pending" *ngIf="i == 3 && !boarded && dateNow < dateBoarding">
+      <div class="mui-panel actionItem pending" *ngIf="i == 3 && dateNow < dateBoarding">
         <div class="mui-col-xs-12">
           <p class="sup">4. Baggage claim.</p>
           <p class="sub">The Terminal where your Baggage can be claimed is tbd</p>
@@ -126,7 +126,14 @@
     <!-- Subtasks ---------------------------------------------------------------------------------------------- -->
     <ul *ngIf="(checkedIn && i == 0 && !securityPassed) || (securityPassed && i == 1 && !boarded)">
       <li class="time time-last"><span>{{ dateNow | date:'shortTime' }}</span></li>
-      <li >
+      <li *ngIf="timeToSecurity <= 15">
+        <div class="actionItem notify">
+          <div>
+            <p>You now have <strong>{{timeToSecurity}} minutes</strong> more until you are ready to board. Please keep the Security-Check in mind</p>
+          </div>
+        </div>
+      </li>
+      <li *ngIf="timeToSecurity > 15">
         <div class="actionItem text">
           <div>
             <p>You now have <strong>{{timeToSecurity}} minutes</strong> more until you are ready to board. How would you like to spend them?</p>
