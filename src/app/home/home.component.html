@@ -19,33 +19,82 @@
       </div>
     </div>
   </div>
-  <a routerLink="/overview" class="flight-info-btn mui-btn mui-btn--fab"><i class="material-icons md-36">&#xE5D3;</i></a>
+  <!-- <a routerLink="/overview" class="flight-info-btn mui-btn mui-btn--fab"><i class="material-icons md-36">&#xE5D3;</i></a> -->
 </div>
 
-<ul class="timeline">
+<ul class="timeline" *ngIf="mainTasks">
   <li class="time time-first"><span class="sub">Arrival time at airport</span><span>{{ currentUser.createdAt | date:'shortTime' }}</span></li>
-  <li *ngFor="let task of currentUser.taskList; let i = index">
-    <div (click)="checkItem(task)" class="mui-panel actionItem {{task.status ? 'done' : 'pending'}}">
-      {{ i+1 }}
-      {{task.name}}
+  <li *ngFor="let task of mainTasks; let i = index">
+    <div (click)="checkItem(task)">
+      <div class="mui-panel actionItem {{task.status ? 'done' : 'pending'}}" *ngIf="i == 0 && checkedIn">
+        <div class="mui-col-xs-9">
+          <p class="sup">1. Checked in.</p>
+        </div>
+        <div class="mui-col-xs-3">
+          <i class="material-icons">&#xE5CA;</i>
+        </div>
+      </div>
+      <div class="mui-panel actionItem {{task.status ? 'done' : 'pending'}}" *ngIf="i == 0 && !checkedIn">
+        <div class="mui-col-xs-9">
+          <p class="sup">1. Checked in.</p>
+          <p class="sub">Are you ready to check in ?</p>
+        </div>
+        <div class="mui-col-xs-3">
+          <p class="check"><span>Done?</span></p>
+        </div>
+      </div>
+      <div class="mui-panel actionItem {{task.status ? 'done' : 'pending'}}" *ngIf="i == 1 && !securityPassed">
+        <div class="mui-col-xs-9">
+          <p class="sup">2. Security-Check is ready.</p>
+          <p class="sub">Many more experiences are available after security.</p>
+        </div>
+        <div class="mui-col-xs-3">
+          <p class="check"><span>Done?</span></p>
+        </div>
+      </div>
+      <div class="mui-panel actionItem {{task.status ? 'done' : 'pending'}}" *ngIf="i == 1 && securityPassed">
+        <div class="mui-col-xs-9">
+          <p class="sup">2. Security-Check passed.</p>
+        </div>
+        <div class="mui-col-xs-3">
+          <i class="material-icons">&#xE5CA;</i>
+        </div>
+      </div>
+      <div class="mui-panel actionItem {{task.status ? 'done' : 'pending'}}" *ngIf="i == 2 && !boarded">
+        <div class="mui-col-xs-9">
+          <p class="sup">3. Boarding is ready.</p>
+          <p class="sub">Please procede to your gate number {{ currentUser.departure.gate.length > 0 ? currentUser.departure.gate : ' - ' }}</p>
+        </div>
+        <div class="mui-col-xs-3">
+          <p class="check"><span>Done?</span></p>
+        </div>
+      </div>
+      <div class="mui-panel actionItem {{task.status ? 'done' : 'pending'}}" *ngIf="i == 2 && boarded">
+        <div class="mui-col-xs-9">
+          <p class="sup">3. Boarded.</p>
+        </div>
+        <div class="mui-col-xs-3">
+          <i class="material-icons">&#xE5CA;</i>
+        </div>
+      </div>
     </div>
-    <ul *ngIf="checkedIn && i == 0">
+    <ul *ngIf="(checkedIn && i == 0 && !securityPassed) || (securityPassed && i == 1 && !boarded)">
       <li class="time time-last"><span>{{ dateNow | date:'shortTime' }}</span></li>
-      <li _ngcontent-rrm-3="">
-        <div _ngcontent-rrm-3="" ng-reflect-class-name="actionItem text" class="actionItem text">
+      <li >
+        <div class="actionItem text">
           <div>
-            <p>You now have <strong>40 minutes</strong> more until you are ready to board. How would you like to spend them?</p>
+            <p>You now have <strong>{{timeToSecurity}} minutes</strong> more until you are ready to board. How would you like to spend them?</p>
           </div>
         </div>
       </li>
-      <li *ngFor="let store of shownStores">
+      <li *ngFor="let store of shownStores; let i = index">
         <div (click)="addSubtask(store)" class="mui-panel actionItem options">
           <div class="mui-col-xs-2">
             <i class="material-icons">&#xE147;</i>
           </div>
           <div class="mui-col-xs-10">
             <p class="sup">{{store.title}}</p>
-            <p>Get <strong>20%</strong> off your coffee</p>
+            <p>Get <strong>{{ (i+1) * 3 }}%</strong> off your coffee</p>
           </div>
         </div>
       </li>
@@ -54,68 +103,12 @@
   <li class="time time-last"><span>{{ currentUser.departure.actualTime | date:'shortTime' }}</span><span class="sub">Flight departure time</span></li>
 </ul>
 
-
-
-
-
-
-
-
-
-
-
-
-<ul _ngcontent-rrm-3="" class="timeline">
-  <li _ngcontent-rrm-3="" class="time time-first"><span _ngcontent-rrm-3="" class="sub">Arrival time at airport</span><span _ngcontent-rrm-3="">10:47 PM</span></li>
-  <li _ngcontent-rrm-3="">
-    <div _ngcontent-rrm-3="" ng-reflect-class-name="mui-panel actionItem done" class="mui-panel actionItem done">
-      <div class="mui-col-xs-9">
-        <p class="sup">1. Checked in.</p>
-      </div>
-      <div class="mui-col-xs-3">
-        <i class="material-icons">&#xE5CA;</i>
-      </div>
-    </div>
-  </li><li _ngcontent-rrm-3="">
-    <div _ngcontent-rrm-3="" ng-reflect-class-name="mui-panel actionItem active" class="mui-panel actionItem active">
-      <div class="mui-col-xs-9">
-        <p class="sup">2. Security-Check is ready.</p>
-        <p class="sub">Many more experiences are available after security.</p>
-      </div>
-      <div class="mui-col-xs-3">
-        <p class="check"><span>Done?</span></p>
-      </div>
-    </div>
-  </li>
-  
-  <li _ngcontent-rrm-3="">
+  <!-- <li _ngcontent-rrm-3="">
     <div _ngcontent-rrm-3="" ng-reflect-class-name="mui-panel actionItem notice" class="mui-panel actionItem notice">
       <div>
         <p>Your Flight has been delayed until <strong>18:56</strong></p>
       </div>
     </div>
-  </li>
+  </li> -->
 
-<li _ngcontent-rrm-3="" class="time time-last"><span _ngcontent-rrm-3="">13:54 AM</span></li>
-
-  <li _ngcontent-rrm-3="">
-    <div _ngcontent-rrm-3="" ng-reflect-class-name="actionItem text" class="actionItem text">
-      <div>
-        <p>You now have <strong>40 minutes</strong> more until you are ready to board. How would you like to spend them?</p>
-      </div>
-    </div>
-  </li>
-  
-  <li _ngcontent-rrm-3="">
-    <div _ngcontent-rrm-3="" ng-reflect-class-name="mui-panel actionItem pending" class="mui-panel actionItem pending">
-      <div>
-        <p class="sup">3. Boarding the Plane</p>
-        <p class="sub">No worries! We will let you know when the plane is ready to board.</p>
-      </div>
-    </div>
-  </li>
-  
-
-  <li _ngcontent-rrm-3="" class="time time-last"><span _ngcontent-rrm-3="">11:00 AM</span><span _ngcontent-rrm-3="" class="sub">Flight departure time</span></li>
-</ul>
 
