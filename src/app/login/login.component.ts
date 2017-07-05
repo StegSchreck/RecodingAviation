@@ -14,7 +14,34 @@ export class LoginComponent implements OnInit {
   private error;
 
   ngOnInit() {
-    console.log('init login')
+
+
+
+    const geoSuccess = function(position) {
+      console.log(position);
+    };
+
+    const geoError = function(error) {
+      console.log('Error occurred. Error code: ' + error.code);
+      // error.code can be:
+      //   0: unknown error
+      //   1: permission denied
+      //   2: position unavailable (error response from location provider)
+      //   3: timed out
+    };
+    const geoOptions = {
+      timeout: 5 * 1000,
+      enableHighAccuracy: true,
+      maximumAge: 5 * 60 * 1000
+    };
+    window.navigator.geolocation.getCurrentPosition(
+      position => { geoSuccess(position); },
+      error => { geoError(error); },
+      geoOptions
+    );
+
+
+
     let userId = this._ps.get('userid', StorageType.SESSION);
     if( userId ) {
       this._us.get(userId)
@@ -40,7 +67,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this._us.post(
-      this.loginForm.email, 
+      this.loginForm.email,
       this.loginForm.name,
       this.loginForm.flightNumber,
       this.loginForm.tel)
