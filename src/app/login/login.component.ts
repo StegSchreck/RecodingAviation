@@ -7,9 +7,11 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.less']
 })
 export class LoginComponent implements OnInit {
+
+  private error;
 
   ngOnInit() {
     console.log('init login')
@@ -44,7 +46,10 @@ export class LoginComponent implements OnInit {
       this.loginForm.tel)
       .then( () => {
         this.router.navigateByUrl('/home');
-      } )
+      })
+      .catch( ( response ) => {
+        this.error = response._body;
+      });
   }
 
 

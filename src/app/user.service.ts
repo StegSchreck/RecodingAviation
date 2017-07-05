@@ -6,8 +6,8 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserService {
-  baseUrl: string = "http://192.168.24.30:3000";
-  //baseUrl: string = "http://192.168.16.191:3000";
+  // baseUrl: string = "http://local.me:3000";
+  baseUrl: string = "http://10.0.104.237:3000";
   private headers: Headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 
   private mucUrl = "https://api-dev.munich-airport.de/aci-airport-v1/detail/iata";
@@ -40,7 +40,6 @@ export class UserService {
             this.currentUser.departure.airport = name
           })
       })
-      .catch( this.handleError );
   }
 
   public currentUser = {
@@ -112,7 +111,6 @@ export class UserService {
       .then( ( response ) => {
         this.setCurrentuser(response)
       })
-      .catch( this.handleError );
   }
 
   private setCurrentuser( data ) {

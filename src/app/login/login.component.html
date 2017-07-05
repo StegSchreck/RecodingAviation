@@ -10,6 +10,9 @@
   </div>
   <div class="mui-form">
     <div class="mui-panel">
+      <div *ngIf="error" class="error">
+        {{ error }}
+      </div>
       <div class="mui-textfield mui-textfield--float-label">
         <input [(ngModel)]="loginForm.name" type="text" >
         <label>First & last name</label>
