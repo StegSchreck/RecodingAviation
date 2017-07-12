@@ -3,10 +3,10 @@
     <div class="mui-container mui-row">
       <p class="name">{{ currentUser.name }}</p>
       <div class="mui-col-xs-7 header-left">
-        
+
         <p><span class="sub">Flight Number</span><br>
         <span class="sup">{{ currentUser.flightNumber }} </span><br>
-        to {{ currentUser.departure.airport }}</p>
+        &#x2708; {{ currentUser.departure.airport }}</p>
       </div>
       <div class="mui-col-xs-3 header-right">
         <p><span class="sub">Departure</span><br>
@@ -119,12 +119,12 @@
       </div>
     </div>
 
-    
+
 
     <!-- -->
-    
 
-    
+
+
     <!-- optionalTasks ------------------------------------------------------------------------------------------ -->
     <ul *ngIf="optionalTasks.length > 0 && ((checkedIn && i == 0 && !securityPassed) || (securityPassed && i == 1 && !boarded))">
     </ul>
@@ -156,7 +156,7 @@
           <div class="mui-col-xs-3">
             <p class="check"><span>Done?</span></p>
           </div>
-          
+
         </div>
         <div class="mui-panel actionItem done" *ngIf="task.done">
           <div class="mui-col-xs-9">
@@ -166,7 +166,7 @@
           <div class="mui-col-xs-3">
             <i class="material-icons">&#xE5CA;</i>
           </div>
-          
+
         </div>
       </li>
       <li *ngFor="let store of shownStores; let i = index">
