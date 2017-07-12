@@ -15,8 +15,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-
-
     const geoSuccess = function(position) {
       console.log(position);
     };
@@ -34,6 +32,7 @@ export class LoginComponent implements OnInit {
       enableHighAccuracy: true,
       maximumAge: 5 * 60 * 1000
     };
+
     window.navigator.geolocation.getCurrentPosition(
       position => { geoSuccess(position); },
       error => { geoError(error); },

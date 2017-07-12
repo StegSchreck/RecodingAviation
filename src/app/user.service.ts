@@ -6,8 +6,9 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserService {
-  baseUrl: string = "http://local.me:3000";
+  baseUrl: string = "http://localhost:3000";
   // baseUrl: string = "http://10.0.104.237:3000";
+  // baseUrl: string = "http://10.0.106.55:8080";
   private headers: Headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 
   private mucUrl = "https://api-dev.munich-airport.de/aci-airport-v1/detail/iata";
@@ -118,7 +119,6 @@ export class UserService {
 
     this.persistance.set('userid', data.json()._id, {type: StorageType.SESSION})
 
-
     this.currentUser = {
       createdAt: data.json().Created_date,
       id: data.json()._id,
@@ -126,7 +126,7 @@ export class UserService {
       mail: data.json().mail,
       flightNumber: data.json().flightNumber,
       departure : {
-        airport: flightJson.departureAirport,
+        airport: flightJson.arrivalAirport,
         actualTime: flightJson.departure.actual,
         airline: flightJson.operatingAirline.name,
         scheduledTime: flightJson.departure.scheduled,
@@ -143,9 +143,6 @@ export class UserService {
 
       return 0
     })
-
-
-
   }
 
   private handleError(error: any): Promise <any> 

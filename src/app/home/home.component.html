@@ -6,7 +6,7 @@
         
         <p><span class="sub">Flight Number</span><br>
         <span class="sup">{{ currentUser.flightNumber }} </span><br>
-        {{ currentUser.departure.airport }}</p>
+        to {{ currentUser.departure.airport }}</p>
       </div>
       <div class="mui-col-xs-3 header-right">
         <p><span class="sub">Departure</span><br>
@@ -20,6 +20,13 @@
     </div>
   </div>
   <!-- <a routerLink="/overview" class="flight-info-btn mui-btn mui-btn--fab"><i class="material-icons md-36">&#xE5D3;</i></a> -->
+</div>
+{{ timeToSecurity }}
+<div *ngIf="timeToSecurity < 10 && timeToSecurity > 0" class="alert-box">
+  Time is close! You must hurry!
+</div>
+<div *ngIf="timeToSecurity <= 0" class="alert-box">
+  You are too late! Please contact the counter to get support!
 </div>
 
 <ul class="timeline" *ngIf="mainTasks">
@@ -169,7 +176,7 @@
           </div>
           <div class="mui-col-xs-7">
             <p class="sup">{{store.title}}</p>
-            <p>Get <strong>20%</strong> off your coffee</p>
+            <p>{{ store.subTitle }}</p>
           </div>
           <div class="mui-col-xs-3">
             <p class="hurztime">10 min</p>
@@ -180,13 +187,3 @@
   </li>
   <li class="time time-last"><span>{{ currentUser.departure.actualTime | date:'shortTime' }}</span><span class="sub">Flight departure time</span></li>
 </ul>
-
-  <!-- <li _ngcontent-rrm-3="">
-    <div _ngcontent-rrm-3="" ng-reflect-class-name="mui-panel actionItem notice" class="mui-panel actionItem notice">
-      <div>
-        <p>Your Flight has been delayed until <strong>18:56</strong></p>
-      </div>
-    </div>
-  </li> -->
-
-
