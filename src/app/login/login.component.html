@@ -10,27 +10,25 @@
   </div>
   <div class="mui-form">
     <div class="mui-panel">
-      <div *ngIf="error" class="error">
-        {{ error }}
-      </div>
       <div class="mui-textfield mui-textfield--float-label">
-        <input [(ngModel)]="loginForm.name" type="text" >
+        <input [(ngModel)]="loginForm.name" type="text" required >
         <label>First & last name</label>
       </div>
       <div class="mui-textfield mui-textfield--float-label">
-        <input [(ngModel)]="loginForm.email" type="email" >
+        <input [(ngModel)]="loginForm.email" required type="email" >
         <label>E-mail</label>
       </div>
       <!--<div class="mui-textfield">
         <input type="password" placeholder="Password">
       </div>-->
-      <div class="mui-textfield mui-textfield--float-label">
-        <input [(ngModel)]="loginForm.flightNumber" type="text" >
+      <div class="mui-textfield mui-textfield--float-label {{ error ? 'input--error' : '' }}">
+        <input [(ngModel)]="loginForm.flightNumber" pattern="[a-z..A-Z]{2}\d{3,4}(?!\d)" required="true" type="text" >
         <label>Flight number</label>
+        <span class="error-label">{{ error }}</span>
       </div>
       <p class="sub">Please provide your telephone number if you would like alerts when your flight is ready.</p>
       <div class="mui-textfield mui-textfield--float-label">
-        <input [(ngModel)]="loginForm.tel" type="text" >
+        <input [(ngModel)]="loginForm.tel" type="tel" required >
         <label>Telephone number</label>
       </div>
       <div class="mui--text-right">

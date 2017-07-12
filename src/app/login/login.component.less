@@ -13,3 +13,28 @@
     padding: 4px 8px;
     margin-bottom: 8px;
 }
+
+.error-label {
+    bottom: 0;
+    color: red;
+    display: none;
+    top: auto;
+
+    .input--error & {
+        display: block;
+    }
+}
+
+
+input:valid{
+    & ~ .error-label {
+        display: none;
+    }
+    & + label {
+        color: green !important;
+    }
+}
+
+.input--error {
+    padding-bottom: 15px;
+}
