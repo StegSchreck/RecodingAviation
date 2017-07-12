@@ -11,6 +11,22 @@
     background: rgb(3, 137, 198)!important;
 }
 
+.alert-box {
+    position: fixed;
+    top: 131px;
+    left: 0;
+    right: 0;
+    color: #fff;
+    background-color: red;
+    padding: 10px 16px;
+}
+
+.flightIcon:before {
+    content: "\2708";
+    font-size: 20px;
+    font-style: normal;
+}
+
 .flight-info-btn{
     position: absolute;
     right: 32px;
