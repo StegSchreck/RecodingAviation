@@ -22,7 +22,7 @@
         <input type="password" placeholder="Password">
       </div>-->
       <div class="mui-textfield mui-textfield--float-label {{ error ? 'input--error' : '' }}">
-        <input [(ngModel)]="loginForm.flightNumber" pattern="([\w]{2,3}[a-zA-Z]?)\s*(\d{3,4})" required="true" type="text" >
+        <input [(ngModel)]="loginForm.flightNumber" pattern="([\w]{2}[a-zA-Z]?)\s*(\d{3,4})" required="true" type="text" >
         <label>Flight number</label>
         <span class="error-label">{{ error }}</span>
       </div>
